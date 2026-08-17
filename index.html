@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday SJ Sojib 🎂</title>
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;overflow:hidden;height:100vh;
+display:flex;justify-content:center;align-items:center;
+font-family:Arial,sans-serif;color:white;text-align:center;
+background:radial-gradient(circle,#46106b,#100016);
+}
+#start{position:absolute;z-index:5}
+.intro{font-size:18px;margin-bottom:45px;letter-spacing:2px}
+.heart{
+width:110px;height:110px;background:#ff176b;
+transform:rotate(-45deg);margin:auto;cursor:pointer;
+box-shadow:0 0 30px #ff176b,0 0 80px #ff176b;
+animation:beat 1s infinite;
+}
+.heart:before,.heart:after{
+content:"";position:absolute;width:110px;height:110px;
+background:#ff176b;border-radius:50%;
+}
+.heart:before{top:-55px}
+.heart:after{left:55px}
+@keyframes beat{
+50%{transform:rotate(-45deg) scale(1.15)}
+}
+.tap{margin-top:65px;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{opacity:.4}}
+
+#birthday{
+opacity:0;visibility:hidden;transition:1.2s;
+}
+#birthday.show{opacity:1;visibility:visible}
+.card{
+padding:40px 25px;width:90%;max-width:650px;
+border-radius:30px;background:#ffffff12;
+backdrop-filter:blur(15px);
+border:1px solid #ffffff30;
+box-shadow:0 0 50px #ff168055;
+}
+.cake{font-size:65px}
+h1{
+font-size:clamp(40px,10vw,70px);
+margin:10px 0;
+background:linear-gradient(90deg,#ff62ad,#ffd166,#fff);
+-webkit-background-clip:text;color:transparent;
+}
+.name{
+font-size:clamp(28px,7vw,48px);
+font-weight:bold;color:#ff8acb;
+text-shadow:0 0 20px #ff176b;
+}
+.message{
+font-size:20px;line-height:1.8;margin-top:20px
+}
+.age{
+display:inline-block;margin-top:20px;padding:12px 25px;
+border-radius:50px;background:linear-gradient(90deg,#ff176b,#8e36ff);
+font-weight:bold;
+}
+.confetti{
+position:fixed;top:-20px;width:9px;height:18px;
+animation:fall 4s linear forwards;
+}
+@keyframes fall{
+to{transform:translateY(110vh) rotate(720deg)}
+}
+</style>
+</head>
+
+<body>
+
+<div id="start">
+<div class="intro">❤️ A SPECIAL SURPRISE FOR YOU ❤️</div>
+<div class="heart" onclick="birthday()"></div>
+<div class="tap">👆 TAP THE HEART 👆</div>
+</div>
+
+<div id="birthday">
+<div class="card">
+<div class="cake">🎂</div>
+<h1>Happy Birthday</h1>
+<div class="name">SJ SOJIB ❤️</div>
+<div class="message">
+আজ তোমার <b>১৭ বছর</b> পূর্ণ হলো! 🎉<br>
+তোমার জীবন আনন্দ, ভালোবাসা ও সাফল্যে ভরে উঠুক। ✨
+</div>
+<div class="age">🎈 17 Years Completed 🎈</div>
+<p>Keep smiling & keep shining! 🌟</p>
+</div>
+</div>
+
+<script>
+function birthday(){
+document.getElementById("start").style.display="none";
+document.getElementById("birthday").classList.add("show");
+
+for(let i=0;i<150;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.background=["#ff176b","#ffd166","#6c63ff","#38e8a5","#fff","#ff8acb"][Math.floor(Math.random()*6)];
+c.style.animationDelay=Math.random()*2+"s";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),6000);
+}
+}
+</script>
+
+</body>
+  </html>
