@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday SJ Sojib 🎂</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: "Poppins", "Noto Sans Bengali", sans-serif;
+    background: radial-gradient(circle at center, #35105f, #16051f 60%, #050008);
+    color: white;
+}
+
+/* Background stars */
+.stars {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: .2;
+        transform: scale(.7);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Opening screen */
+#opening {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: 1.2s ease;
+}
+
+#opening.hide {
+    opacity: 0;
+    transform: scale(1.5);
+    pointer-events: none;
+}
+
+.intro {
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: #ffd6f7;
+    margin-bottom: 35px;
+    animation: fadeIn 2s ease;
+}
+
+.heart {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    cursor: pointer;
+    transform: rotate(-45deg);
+    background: #ff176b;
+    box-shadow:
+        0 0 25px #ff176b,
+        0 0 60px #ff176b,
+        0 0 100px rgba(255, 23, 107, .6);
+    animation: heartbeat 1.2s infinite;
+    transition: .4s;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #ff176b;
+}
+
+.heart::before {
+    top: -60px;
+    left: 0;
+}
+
+.heart::after {
+    left: 60px;
+    top: 0;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: rotate(-45deg) scale(1);
+    }
+    50% {
+        transform: rotate(-45deg) scale(1.15);
+    }
+}
+
+.tap {
+    margin-top: 70px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: #fff;
+    animation: pulseText 1.5s infinite;
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: .4; }
+    50% { opacity: 1; }
+}
+
+/* Birthday page */
+#birthday {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 1.5s ease;
+    z-index: 5;
+}
+
+#birthday.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.card {
+    width: min(90%, 650px);
+    padding: 45px 25px;
+    border-radius: 30px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,.2);
+    box-shadow: 0 0 50px rgba(255, 0, 128, .25);
+    animation: cardIn 1.5s ease;
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(80px) scale(.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.cake {
+    font-size: 70px;
+    animation: cakeFloat 2s infinite ease-in-out;
+}
+
+@keyframes cakeFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+h1 {
+    margin-top: 15px;
+    font-size: clamp(38px, 10vw, 72px);
+    background: linear-gradient(90deg, #ff66b3, #ffd166, #fff);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+    background-size: 200%;
+}
+
+@keyframes shine {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+
+.name {
+    font-size: clamp(28px, 7vw, 48px);
+    font-weight: bold;
+    color: #ff8acb;
+    margin-top: 8px;
+    text-shadow: 0 0 20px #ff1780;
+}
+
+.message {
+    margin-top: 25px;
+    font-size: clamp(18px, 4vw, 25px);
+    line-height: 1.8;
+    color: #fff;
+}
+
+.age {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #ff176b, #9b36ff);
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 0 25px rgba(255, 23, 107, .6);
+}
+
+/* Balloons */
+.balloon {
+    position: fixed;
+    bottom: -150px;
+    width: 55px;
+    height: 70px;
+    border-radius: 50%;
+    z-index: 2;
+    animation: fly 9s linear infinite;
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: rgba(255,255,255,.6);
+    left: 50%;
+    top: 68px;
+}
+
+.b1 {
+    left: 8%;
+    background: #ff4d8d;
+    animation-delay: 0s;
+}
+
+.b2 {
+    left: 25%;
+    background: #6c63ff;
+    animation-delay: 2s;
+}
+
+.b3 {
+    left: 70%;
+    background: #ffd166;
+    animation-delay: 1s;
+}
+
+.b4 {
+    left: 88%;
+    background: #38e8a5;
+    animation-delay: 3s;
+}
+
+@keyframes fly {
+    0% {
+        bottom: -150px;
+        transform: translateX(0) rotate(0);
+    }
+    50% {
+        transform: translateX(40px) rotate(8deg);
+    }
+    100% {
+        bottom: 110%;
+        transform: translateX(-40px) rotate(-8deg);
+    }
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 18px;
+    z-index: 20;
+    animation: confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Floating hearts */
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    color: #ff4f9a;
+    font-size: 25px;
+    animation: floatHeart 6s linear forwards;
+    z-index: 1;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) scale(.5);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.5) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Stars -->
+<div class="stars" id="stars"></div>
+
+<!-- Opening -->
+<section id="opening">
+    <div class="intro">A SPECIAL SURPRISE FOR YOU ✨</div>
+
+    <div class="heart" id="heart"></div>
+
+    <div class="tap">❤️ TAP THE HEART ❤️</div>
+</section>
+
+<!-- Birthday -->
+<section id="birthday">
+
+    <div class="card">
+
+        <div class="cake">🎂</div>
+
+        <h1>Happy Birthday</h1>
+
+        <div class="name">
+            SJ SOJIB ❤️
+        </div>
+
+        <div class="message">
+            আজ তোমার <b>১৭ বছর</b> পূর্ণ হলো! 🎉<br>
+            তোমার জীবনের প্রতিটি মুহূর্ত<br>
+            আনন্দ, ভালোবাসা আর সাফল্যে ভরে উঠুক। ✨
+        </div>
+
+        <div class="age">
+            🎈 17 Years Completed 🎈
+        </div>
+
+        <p style="margin-top:25px;color:#ffd6f7;">
+            Keep smiling & keep shining! 🌟
+        </p>
+
+    </div>
+
+</section>
+
+<!-- Balloons -->
+<div class="balloon b1"></div>
+<div class="balloon b2"></div>
+<div class="balloon b3"></div>
+<div class="balloon b4"></div>
+
+<script>
+
+/* Create stars */
+const stars = document.getElementById("stars");
+
+for(let i = 0; i < 100; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay = Math.random() * 3 + "s";
+    star.style.animationDuration =
+        (1 + Math.random() * 3) + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* Heart click */
+const heart = document.getElementById("heart");
+const opening = document.getElementById("opening");
+const birthday = document.getElementById("birthday");
+
+heart.addEventListener("click", function() {
+
+    opening.classList.add("hide");
+
+    setTimeout(() => {
+        birthday.classList.add("show");
+        startConfetti();
+        startHearts();
+    }, 700);
+
+});
+
+
+/* Confetti */
+function startConfetti() {
+
+    for(let i = 0; i < 180; i++) {
+
+        const confetti = document.createElement("div");
+
+        confetti.className = "confetti";
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.background =
+            randomColor();
+
+        confetti.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        confetti.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 6000);
+    }
+}
+
+
+/* Floating hearts */
+function startHearts() {
+
+    setInterval(() => {
+
+        const heart = document.createElement("div");
+
+        heart.className = "floating-heart";
+        heart.innerHTML = "❤️";
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 30) + "px";
+
+        heart.style.animationDuration =
+            (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+
+    }, 500);
+}
+
+
+/* Random colors */
+function randomColor() {
+
+    const colors = [
+        "#ff176b",
+        "#ffd166",
+        "#6c63ff",
+        "#38e8a5",
+        "#ffffff",
+        "#ff8acb",
+        "#00d4ff"
+    ];
+
+    return colors[
+        Math.floor(Math.random() * colors.length)
+    ];
+}
+
+</script>
+
+</body>
+</html>
